@@ -1,0 +1,125 @@
+// Bourbon & Neat
+@import '../../bower_components/bourbon/dist/bourbon';
+
+@import 'fonts';
+
+* {
+	@include box-sizing(border-box);
+}
+
+html {
+	height: 100%;
+}
+
+body {
+
+	background: #000;
+	color: #343836;
+
+	font-family: daisywheelregular, "Courier New";
+	font-weight: bold;
+	text-transform: uppercase;
+
+	line-height: 1.25em;
+
+	@include size(100%);
+
+}
+
+#main {
+
+	@include size(100%);
+	
+	background-image: url('/images/background-narrow.jpg');
+	background-position: center bottom;
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+
+
+	@media only screen and (min-width: 600px) {
+
+		background-image: url('/images/background-large.jpg'); 
+
+	}
+
+
+	// Fade in animation.
+	opacity: 0;
+	@include transition(opacity 3.0s ease-in);
+
+
+	&.complete {
+		opacity: 1;
+	}
+
+}
+
+.contact {
+
+	// Fade in even slower
+	opacity: 0;
+	@include transition(opacity 5.0s ease-in 1s);
+
+	.complete & {
+		opacity: 1;
+	}
+
+}
+
+
+h1 {
+	display: none;
+}
+
+
+a {
+
+	color: inherit;
+	text-decoration: none;
+	
+	@include transition(color 1.0s ease-out);
+
+	.no-touch &:hover {
+
+		color: #fff;
+		@include transition(color 1.0s ease-in);
+
+	}
+
+	.no-touch &[href^="tel://"] {
+
+		cursor: default;
+		pointer-events: none;
+
+	}
+
+}
+
+
+// Mobile contact
+.contact {
+
+	padding: 20px;
+	line-height: 2em;
+
+
+
+
+	@media only screen and (min-width: 780px) and (min-height: 580px) {
+
+		font-size: 1.5em;
+		line-height: 1.25em;
+
+		padding: 0;
+
+		position: absolute;
+		right: 10%;
+		top: 5%;
+
+	}
+
+	@media (max-width: 400px) {
+		font-size: 0.875em;
+	}
+
+}
